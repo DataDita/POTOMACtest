@@ -1,4 +1,4 @@
-last i had in data dita from april:”
+
 import streamlit.components.v1 as components
 import streamlit as st
 import snowflake.snowpark as sp
