@@ -1,44 +1,37 @@
+last i had in data dita from april:”
+import streamlit.components.v1 as components
 import streamlit as st
-from snowflake.snowpark import Session
 import snowflake.snowpark as sp
+from snowflake.snowpark import Session
 from datetime import datetime, timedelta, time
-import pandas as pd
 import re
 import uuid
 import hashlib
-import base64
 from PIL import Image, ImageOps
 import io
-import requests
-import os  # Add tahis import
-import json
-from fpdf import FPDF
-
-
+import base64
+import pandas as pd
 ##########################################################################################
 ##########################################################################################
 ##########################################################################################
 
 
-       
+##########################################################################################
+##########################################################################################
+
 # Initialize Snowflake connection
 def get_session():
-        # First, try to get the active session (works inside Snowflake)
-        return sp.context.get_active_session()
- ##########################################################################################
-
-
+    return sp.context.get_active_session()
 
 # Role-based access control
 ROLE_ACCESS = {
-    'admin': ['Home', 'profile', 'customers', 'appointments', 'quote', 'estimate_report','customer_info', 
-              'technician_installation_report', 'admin_tables',  'service_history', 'payments_management',
-             'invoices_management', 'jobs_management'],
-    
-    'office': ['Home', 'customers', 'appointments'],
-    'technician': ['Home', 'profile', 'quote', 'invoices', 'payments'],
+    'admin': ['Home', 'profile', 'customers', 'appointments', 'quotes', 'invoices', 'payments', 'reports', 'analytics', 'admin_tables', 'equipment'],
+    'office': ['Home', 'customers', 'appointments', 'equipment'],
+    'technician': ['Home', 'profile', 'quotes', 'invoices', 'payments', 'equipment'],
     'driver': ['Home', 'profile', 'driver_tasks']
-}
+} ##########################################################################################
+
+
 
 
 
